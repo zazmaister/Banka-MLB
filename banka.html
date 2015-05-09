@@ -1,0 +1,89 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+	<title>Banka MLB</title>
+	<meta charset="UTF-8">
+	<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+</head>
+<body ng-app="banka">
+	<div class="container" ng-controller="BankaController">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="text-center">Kalkulator varčevanja in izplačil</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Kalkulator varčevanja</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="form-group">
+				    <label for="mesecnoVplacilo">Mesečno vplačilo:</label>
+				    <div class="input-group">
+				    	<span class="input-group-addon">Mesečno vpl.:</span>
+				      	<input type="text" class="form-control" id="mesecnoVplacilo" placeholder="Mesečno vplačilo" ng-model="mesecnoVplacilo" ng-change="calculate()"/>
+				    </div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="form-group">
+				    <label for="steviloMesecev">Število mesecev:</label>
+				    <div class="input-group">
+				    	<span class="input-group-addon">Število mesecev:</span>
+				      	<input type="text" class="form-control" id="steviloMesecev" placeholder="Število mesecev" ng-model="steviloMesecev"  ng-change="calculate()"/>
+				    </div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="form-group">
+				    <label for="obrestnaMera">Mesečna obrestna mera:</label>
+				    <div class="input-group">
+				    	<span class="input-group-addon">%</span>
+				      	<input type="text" class="form-control" id="obrestnaMera" placeholder="Obrestna mera" ng-model="obrestnaMera" ng-change="calculate()"/>
+				      	<span class="input-group-btn">
+				      		<button class = "btn btn-primary" ng-click="calculate()">Izračunaj</button>
+				      	</span>
+				    </div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<h3 style="position:relative;top:10px;">{{izracun | currency}}</h3>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Kalkulator izplačil</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+				    <label for="mesecnoIzplacilo">Višina mesečnega izplačila</label>
+				    <div class="input-group">
+				    	<span class="input-group-addon">Mesečno izp.:</span>
+				      	<input type="text" class="form-control" id="mesecnoIzplacilo" placeholder="Mesečno izplačilo" ng-model="mesecnoIzplacilo" ng-change="calculateIzplacilo()"/>
+				    </div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+				    <label for="steviloMesecev">Število mesecev</label>
+				    <div class="input-group">
+				    	<span class="input-group-addon">Št. mesecev:</span>
+				      	<input type="text" class="form-control" id="steviloMesecev" placeholder="Število mesecev" ng-model="steviloMesecev1" ng-change="calculateIzplacilo()"/>
+				    </div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<h3 style="position:relative;top:10px;">Za izplačilo potrebuješ: {{ izracunIzplacilo | currency}}</h3>
+			</div>
+		</div>	
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
